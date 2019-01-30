@@ -82,7 +82,7 @@ class VendaController extends AbstractController
         /** @var Venda $venda */
         $venda = $em->getRepository(Venda::class)->find($id);
 
-        foreach ($request->query->get('produto') as $produtoId => $quantidade) {
+        foreach ($request->query->get('produto', []) as $produtoId => $quantidade) {
             if ($quantidade > 0) {
                 $vendaProduto = $em->getRepository(VendaProduto::class)->findOneBy(['Produto' => $produtoId, 'Venda' => $id]);
 
