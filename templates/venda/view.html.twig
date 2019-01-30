@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block breadcrumb %}
+	<li class="breadcrumb-item"><a href="{{ app.request.schemeAndHttpHost }}/vendas">Vendas</a></li>
+	<li class="breadcrumb-item">Venda</li>
+{% endblock %}
+
+{% block buttons %}
+	<a href="{{ app.request.schemeAndHttpHost }}/vendas/" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Voltar</a>
+{% endblock %}
+
+{% block body %}
+	<div class="row">
+		<div class="col-xs-12 col-xl-6 offset-xl-3">
+			<div class="card">
+				<div class="card-header">
+					<div class="pull-left">
+						<h5>Carrinho</h5>
+					</div>
+				</div>
+				<div class="card-header">
+					<div class="table-responsive">
+						<table class="table table-condensed" width="100%" cellspacing="0">
+							<thead>
+							<th>Produto</th>
+							<th class="text-right">Preço</th>
+							<th class="text-center" width="20%">Qtde.</th>
+							<th class="text-right">Total</th>
+							</thead>
+							<tbody>
+							{% for item in collVendaProduto %}
+								<tr>
+									<td>
+										{{ item.getProduto().getDescricao() }} <br>
+										{{ item.getProduto().getCodigo() }}
+									</td>
+									<td class="text-right">R$ {{ item.getValorUnitario()|number_format(2, ',', '.') }}</td>
+									<td class="text-center">
+										{{ item.getQuantidade() }} un
+									</td>
+									<td class="text-right">R$ {{ item.getValorTotal()|number_format(2, ',', '.') }}</td>
+								</tr>
+							{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="card-footer">
+					<div class="pull-right">
+						R$ {{ venda.getValorTotal()|number_format(2, ',', '.') }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

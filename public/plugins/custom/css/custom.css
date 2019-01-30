@@ -1,0 +1,14 @@
+.pull-left > .breadcrumb {
+    background: transparent;
+    margin-bottom: 0px;
+    padding: 0px;
+}
+
+input[data-toggle="touch-spin"]::-webkit-outer-spin-button, input[data-toggle="touch-spin"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[data-toggle="touch-spin"] {
+    -moz-appearance: textfield;
+}
